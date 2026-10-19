@@ -27,4 +27,4 @@ while True:
         print("Game Ended")
         break
     else:
-        print("Invalid Input")
+        print("Error: Invalid_Input")

@@ -3,40 +3,64 @@
 def guess_engine(level):
     import random
 
-    if level == "easy":
-        the_number = random.randint(1,50)
-    elif level == "medium":
-        the_number = random.randint(1,100)
-    else:
-        the_number = random.randint(1,500)
-
-
-    user_guess = 0
-    attempt = 0
     print("~~~~~~~~~~~~ Computer have selected a number ~~~~~~~~~~")
     print("+++++++++++++Guess the Number+++++++++++++\n")
     while True:
+        user_guess = 0
+        attempt = 0
         user_guess = (input())
-        if isinstance(int(user_guess),int):
-            n=int(user_guess)
-            if n<100 or n>0:
-                if n == the_number:
+        try:
+            num = int(user_guess)
+        except ValueError:
+            if user_guess == "stop":
+                return user_guess.lower().strip()
+            else:
+                print("Error: Invalid_Input")
+                continue
+        if level == "easy":
+            the_number = random.randint(1,50)
+            if num > 0 or num < 50:
+                if num == the_number:
                     attempt += 1
                     return attempt
-                elif n>the_number:
+                elif num > the_number:
                     attempt += 1
                     print("Your Guess is Higher, Try a Smaller Number than this")
-                elif n<the_number:
+                elif num < the_number:
                     attempt += 1
                     print("Your Guess is Lower, Try a Higher Number than this")
             else:
-                print("Guess is Beyond Your Level")
-        elif user_guess == "stop":
-            return user_guess.lower().strip()
+                print("Error :GuessIsBeyondYourLevel")
+            
+        elif level == "medium":
+            the_number = random.randint(1,100)
+            if num > 0 or num < 100:
+                if num == the_number:
+                    attempt += 1
+                    return attempt
+                elif num > the_number:
+                    attempt += 1
+                    print("Your Guess is Higher, Try a Smaller Number than this")
+                elif num < the_number:
+                    attempt += 1
+                    print("Your Guess is Lower, Try a Higher Number than this")
+            else:
+                print("Error :GuessIsBeyondYourLevel")
         else:
-            print("Invalid Input: IT IS NOT AN INTEGER")
-            print("Try Again...")
-
+            the_number = random.randint(1,500)
+            if num > 0 or num < 500:
+                if num == the_number:
+                    attempt += 1
+                    return attempt
+                elif num > the_number:
+                    attempt += 1
+                    print("Your Guess is Higher, Try a Smaller Number than this")
+                elif num < the_number:
+                    attempt += 1
+                    print("Your Guess is Lower, Try a Higher Number than this")
+            else:
+                print("Error :GuessIsBeyondYourLevel")
+        
 
             
             
