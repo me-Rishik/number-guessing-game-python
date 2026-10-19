@@ -3,11 +3,20 @@
 def guess_engine(level):
     import random
 
+    if level == "easy":
+        the_number = random.randint(1,50)
+    elif level == "medium":
+        the_number = random.randint(1,100)
+    else:
+        the_number = random.randint(1,500)
+
     print("~~~~~~~~~~~~ Computer have selected a number ~~~~~~~~~~")
     print("+++++++++++++Guess the Number+++++++++++++\n")
+
+    user_guess = 0
+    attempt = 0
+    
     while True:
-        user_guess = 0
-        attempt = 0
         user_guess = (input())
         try:
             num = int(user_guess)
@@ -17,9 +26,9 @@ def guess_engine(level):
             else:
                 print("Error: Invalid_Input")
                 continue
+
         if level == "easy":
-            the_number = random.randint(1,50)
-            if num > 0 or num < 50:
+            if num > 0 and num < 50:
                 if num == the_number:
                     attempt += 1
                     return attempt
@@ -33,8 +42,7 @@ def guess_engine(level):
                 print("Error :GuessIsBeyondYourLevel")
             
         elif level == "medium":
-            the_number = random.randint(1,100)
-            if num > 0 or num < 100:
+            if num > 0 and num < 100:
                 if num == the_number:
                     attempt += 1
                     return attempt
@@ -47,8 +55,7 @@ def guess_engine(level):
             else:
                 print("Error :GuessIsBeyondYourLevel")
         else:
-            the_number = random.randint(1,500)
-            if num > 0 or num < 500:
+            if num > 0 and num < 500:
                 if num == the_number:
                     attempt += 1
                     return attempt
